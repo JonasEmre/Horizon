@@ -16,7 +16,7 @@ public abstract class Characters : MonoBehaviour
     protected Vector2 lastDirection;
     protected Vector2 moveDirection;
 
-    void Start()
+    protected virtual void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

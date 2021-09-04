@@ -11,14 +11,16 @@ public class TimeManager : MonoBehaviour
     public static Action OnMonthChanged;
     public static Action OnYearChanged;
 
-    public static int Hour { get; private set; }
-    public static int Day { get; private set; }
-    public static int Week { get; private set; }
-    public static int Month { get; private set; }
-    public static int Year { get; private set; }
+    public static int Hour { get; private set; } = 9;
+    public static int Day { get; private set; } = 1;
+    public static int Week { get; private set; } = 4;
+    public static int Month { get; private set; } = 3;
+    public static int Year { get; private set; } = 1522;
 
     public static bool TownScale = true;
     public static bool WorldScale = false;
+
+    static TimeManager instace;
 
     private static string[] monthNames = new string[] {"0", "January", "February", "March", "April", "May",
         "June", "July", "August", "September", "October", "November", "December", "0"};
@@ -62,11 +64,13 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        Hour = 9;
-        Day = 3;
-        Week = 1;
-        Month = 6;
-        Year = 1522;
+        if(instace != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        instace = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Update()
